@@ -1,0 +1,8 @@
+name: oceancolor
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - matplotlib
+  - scipy
+  - ipywidgets
