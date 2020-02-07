@@ -9,4 +9,4 @@ make -f $OSOAA_ROOT/gen/Makefile_OSOAA.gfortran
 git clone https://github.com/fnemina/pyOSOAA.git
 cd pyOSOAA
 python setup.py install
-pip install pyOSOAA
+python -m pip install pyOSOAA

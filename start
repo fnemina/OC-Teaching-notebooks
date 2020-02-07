@@ -1,3 +1,0 @@
-#!/bin/bash
-
-export OSOAA_ROOT=/home/${NB_USER}/RadiativeTransferCode-OSOAA
