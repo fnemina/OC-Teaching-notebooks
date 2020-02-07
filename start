@@ -1,0 +1,1 @@
+ENV OSOAA_ROOT /home/${NB_USER}/RadiativeTransferCode-OSOAA
