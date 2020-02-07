@@ -1,1 +1,3 @@
-ENV OSOAA_ROOT /home/${NB_USER}/RadiativeTransferCode-OSOAA
+#!/bin/bash
+
+export OSOAA_ROOT=/home/${NB_USER}/RadiativeTransferCode-OSOAA
