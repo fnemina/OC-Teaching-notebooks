@@ -5,4 +5,4 @@ This is a collection of jupyter notebooks for teaching different Ocean Colour re
 
 * [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fnemina/OC-Teaching-notebooks/master?filepath=notebooks%2FatmSim.ipynb) - Atmospheric simulator
 
-*[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fnemina/OC-Teaching-notebooks/master?filepath=notebooks%2FchlRho.ipynb) - Normalized water reflectance simulator
+* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/fnemina/OC-Teaching-notebooks/master?filepath=notebooks%2FchlRho.ipynb) - Normalized water reflectance simulator
