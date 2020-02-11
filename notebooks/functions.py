@@ -6,6 +6,53 @@ import ipywidgets as widgets
 from IPython.display import clear_output
 from tqdm.notebook import tqdm
 import pyOSOAA
+from scipy.interpolate import interp1d, interpn
+
+
+chl_range = np.logspace(-3,2,11)
+sed_range = np.array([0,1,10,100,1000])
+
+wl = np.linspace(405,700,20)
+wl = np.append(wl, [750, 865, 900])
+
+c = np.round(np.random.uniform(0,5),1); s = 0
+
+rho_arr = np.load("rho_arr.npy")
+
+def f(chl, sed):
+    return interpn((chl_range, sed_range), rho_arr[:,:,0,0,:], (chl,sed))[0]
+
+list_satellite = np.load('list_satellite.npy',allow_pickle='TRUE').item()
+list_satellite[None] = None
+
+list_data = np.load('list_data.npy',allow_pickle='TRUE').item()
+
+def plt_f(chl, sed=0, satellite="czcs", data=None, compute=False, text=False):
+    if data is not None:
+        plt.plot(list_satellite["seawifs"],list_data[data], 'ko')
+    if compute is True:
+        if satellite is not None:
+            rho = interp1d(wl, f(chl, sed), fill_value="extrapolate")(list_satellite[satellite])
+            plt.plot(list_satellite[satellite], rho, 'ko')
+
+    elif compute == "data":
+        if satellite is not None:
+            plt.plot(list_satellite[satellite], interp1d(wl, f(c, 0), fill_value="extrapolate")(list_satellite[satellite]), 'ko')
+
+    plt.plot(wl, f(chl, sed))
+    plt.xlabel(rf"$\lambda$ [nm]"), plt.ylim(bottom=-0.003, top=0.063), plt.ylabel(rf"$\rho$")
+    plt.show()
+    if text is True:
+        rho = interp1d(wl, f(chl, sed), fill_value="extrapolate")(list_satellite[satellite])
+        if satellite is not None:
+            print("wl[nm]", end='\t')
+            for i in range(list_satellite[satellite].size):
+                print(f"   {list_satellite[satellite][i]}", end='\t')
+            print("")
+            print("rho ", end='\t')
+            for i in range(list_satellite[satellite].size):
+                print(f"{np.round(rho[i],4)}", end='\t')
+    return None
 
 # We define the list of satellites and kinds of atmospheres according to the Shettle and Fenn models
 list_satellite = np.load('list_satellite.npy',allow_pickle='TRUE').item()
