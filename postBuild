@@ -6,7 +6,4 @@ git clone https://github.com/CNES/RadiativeTransferCode-OSOAA.git
 mkdir $OSOAA_ROOT/obj
 make -f $OSOAA_ROOT/gen/Makefile_OSOAA.gfortran
 
-git clone https://github.com/fnemina/pyOSOAA.git
-cd pyOSOAA
-python setup.py install
-python -m pip install pyOSOAA
+pip install git+https://github.com/fnemina/pyOSOAA
